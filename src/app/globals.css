@@ -1,26 +1,218 @@
-@import "tailwindcss";
-
 :root {
+  /* SLEEK MONOCHROME NEUTRAL - DARK THEME (Default) */
+  --background: #000000;
+  --foreground: #fafafa;
+  
+  --card-bg: #09090b; /* zinc-950 */
+  --card-border: #27272a; /* zinc-800 */
+  --card-hover-border: #3f3f46; /* zinc-700 */
+  
+  --primary: #ffffff; /* Monochrome White */
+  --primary-hover: #e4e4e7; /* zinc-200 */
+  --primary-container: #18181b; /* zinc-900 */
+  --on-primary: #000000;
+  --on-primary-container: #ffffff;
+  
+  --secondary: #18181b;
+  --secondary-container: #27272a;
+  --on-secondary-container: #ffffff;
+  
+  --accent: #ffffff;
+  --outline: #27272a;
+  --outline-variant: #3f3f46;
+  
+  --muted: #a1a1aa; /* zinc-400 */
+  --muted-light: #09090b;
+  
+  --success: #10b981;
+  --error: #ef4444;
+  
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 8px; /* Remove rounded pill button styling */
+  
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  
+  --transition-fast: 0.12s cubic-bezier(0, 0, 0.2, 1);
+  --transition-normal: 0.22s cubic-bezier(0, 0, 0.2, 1);
+  
+  --shadow-premium: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] {
+  /* SLEEK MONOCHROME NEUTRAL - LIGHT THEME OVERRIDES */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #09090b; /* zinc-950 */
+  
+  --card-bg: #ffffff;
+  --card-border: #e4e4e7; /* zinc-200 */
+  --card-hover-border: #d4d4d8; /* zinc-300 */
+  
+  --primary: #09090b; /* Monochrome Black */
+  --primary-hover: #27272a; /* zinc-800 */
+  --primary-container: #f4f4f5; /* zinc-100 */
+  --on-primary: #ffffff;
+  --on-primary-container: #09090b;
+  
+  --secondary: #f4f4f5;
+  --secondary-container: #e4e4e7;
+  --on-secondary-container: #09090b;
+  
+  --accent: #09090b;
+  --outline: #e4e4e7;
+  --outline-variant: #d4d4d8;
+  
+  --muted: #71717a; /* zinc-500 */
+  --muted-light: #f4f4f5;
+  
+  --success: #0f9f6e;
+  --error: #e02424;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  min-height: 100vh;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Minimalist Flat Card Surface (Replaces soft/blur effects) */
+.glass {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-premium);
+  transition: all var(--transition-normal);
+}
+
+.glass-hover:hover {
+  border-color: var(--card-hover-border);
+}
+
+/* Page transitions & loading micro-animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
+.fade-in {
+  animation: fadeIn var(--transition-normal) forwards;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Sleek Buttons (Rectangular, high-contrast, sharp 8px corners) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  border: 1px solid transparent;
+  user-select: none;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--on-primary) !important;
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+  color: var(--foreground);
+  border-color: var(--card-border);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-container);
+  border-color: var(--outline-variant);
+}
+
+.btn-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Minimalist Outlined Inputs */
+.input {
+  width: 100%;
+  padding: 11px 14px;
+  background: var(--muted-light);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--primary);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--outline-variant);
 }

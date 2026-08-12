@@ -1,0 +1,728 @@
+/* Dashboard Main Layout */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 32px 24px;
+    gap: 24px;
+  }
+}
+
+/* Header & Navbar */
+.navbar {
+  border-bottom: 1px solid var(--card-border);
+  background: var(--background);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: all var(--transition-normal);
+}
+
+.navInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .navInner {
+    padding: 14px 24px;
+  }
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.03em;
+  user-select: none;
+}
+
+.logoDot {
+  width: 6px;
+  height: 6px;
+  background: var(--foreground);
+  border-radius: 50%;
+}
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Sleek Theme Toggle Button */
+.themeToggleBtn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--foreground);
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.themeToggleBtn:hover {
+  background: var(--secondary);
+  border-color: var(--card-hover-border);
+}
+
+.themeToggleBtn:active {
+  transform: scale(0.95);
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 16px 0 4px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.heroTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--foreground);
+  letter-spacing: -0.035em;
+}
+
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 3rem;
+  }
+}
+
+.heroSubtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+  max-width: 550px;
+  line-height: 1.5;
+  padding: 0 8px;
+}
+
+@media (min-width: 768px) {
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Sleek Segmented Buttons (Tabs Selector) */
+.tabsContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.tabs {
+  display: flex;
+  background: var(--muted-light);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--card-border);
+  padding: 3px;
+  width: 100%;
+  max-width: 340px;
+}
+
+.tabButton {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tabButtonActive {
+  background: var(--card-bg);
+  color: var(--foreground);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-premium);
+}
+
+/* Layout Form & Editor grids */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 960px) {
+  .dashboardGrid {
+    grid-template-columns: 1.25fr 1fr;
+    gap: 24px;
+  }
+}
+
+.panel {
+  padding: 20px;
+}
+
+.panelTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 10px;
+}
+
+/* Sleek Template Selector Grid */
+.templateGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(95px, 1fr));
+  gap: 10px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+@media (min-width: 480px) {
+  .templateGrid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+}
+
+.templateCard {
+  aspect-ratio: 1;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+  background: var(--card-bg);
+  transition: all var(--transition-fast);
+}
+
+.templateCard:hover {
+  border-color: var(--card-hover-border);
+  transform: translateY(-1px);
+}
+
+.templateCardActive {
+  border-color: var(--primary);
+  border-width: 1px;
+}
+
+.templateImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.templateName {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(9, 9, 11, 0.9);
+  color: var(--foreground);
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 4px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-top: 1px solid var(--card-border);
+}
+
+[data-theme="light"] .templateName {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--foreground);
+}
+
+.uploadArea {
+  border: 1px dashed var(--card-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: var(--muted);
+  aspect-ratio: 1;
+  background: transparent;
+}
+
+.uploadArea:hover {
+  border-color: var(--primary);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+/* Canvas Wrapper styling */
+.canvasWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--muted-light);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  border: 1px solid var(--card-border);
+  position: relative;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .canvasWrapper {
+    padding: 16px;
+    min-height: 320px;
+  }
+}
+
+.canvas {
+  max-width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border);
+  background: #000;
+}
+
+/* Form Controls & Inputs */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.controlGroup label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.textInputRow {
+  display: flex;
+  gap: 8px;
+}
+
+.textStyleControls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.styleBtn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--foreground);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: bold;
+  transition: all var(--transition-fast);
+}
+
+.styleBtn:hover {
+  background: var(--secondary);
+  border-color: var(--card-hover-border);
+}
+
+.styleBtnActive {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+/* Save / Redirect displays */
+.resultContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  background: var(--muted-light);
+  border: 1px solid var(--card-border);
+  margin-top: 8px;
+}
+
+.resultTitle {
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.shareBox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+@media (min-width: 480px) {
+  .shareBox {
+    flex-direction: row;
+  }
+}
+
+.shortLink {
+  flex: 1;
+  background: var(--background);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: 0.88rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+/* URL Shortener Form Layout */
+.shortenerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Chip-styled Reaction Selector */
+.reactionTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.reactionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+  margin-top: 4px;
+}
+
+@media (min-width: 480px) {
+  .reactionGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+}
+
+.reactionCard {
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: 1px solid var(--card-border);
+  padding: 8px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.reactionCard:hover {
+  background: var(--secondary);
+  border-color: var(--card-hover-border);
+}
+
+.reactionCardActive {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.reactionCardActive .reactionName {
+  color: var(--on-primary);
+}
+
+.reactionEmoji {
+  font-size: 1.1rem;
+}
+
+.reactionName {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Flat Redirect Screen */
+.redirectContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background-color: var(--background);
+  text-align: center;
+  gap: 16px;
+}
+
+.redirectMeme {
+  max-width: 340px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--card-border);
+}
+
+.redirectProgress {
+  width: 100%;
+  max-width: 240px;
+  height: 2px;
+  background: var(--card-border);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--foreground);
+  width: 0%;
+  animation: growProgress 2.2s linear forwards;
+}
+
+@keyframes growProgress {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+.redirectText {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.redirectText a {
+  color: var(--foreground);
+  text-decoration: underline;
+}
+
+/* Footer Section */
+.footer {
+  border-top: 1px solid var(--card-border);
+  background: var(--background);
+  padding: 20px 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  transition: all var(--transition-normal);
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Dynamic sharing page layout */
+.shareContainer {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.memeShowcase {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--card-border);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+
+.showcaseImage {
+  max-width: 100%;
+  max-height: 480px;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (min-width: 768px) {
+  .showcaseImage {
+    max-height: 520px;
+  }
+}
+
+.shareTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2px;
+}
+
+@media (min-width: 768px) {
+  .shareTitle {
+    font-size: 1.6rem;
+  }
+}
+
+.shareActions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+@media (min-width: 480px) {
+  .shareActions {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.shareIconList {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.shareIconBtn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--foreground);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 1rem;
+}
+
+.shareIconBtn:hover {
+  background: var(--secondary);
+  border-color: var(--card-hover-border);
+}
+
+/* FAQ Collapsible Accordions (Sleek Minimal Dividers) */
+.faqSection {
+  margin-top: 28px;
+  border-top: 1px solid var(--card-border);
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faqContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.faqItem {
+  border-bottom: 1px solid var(--card-border);
+  border-radius: 0;
+  background: transparent;
+  transition: all var(--transition-fast);
+}
+
+.faqItem:first-child {
+  border-top: 1px solid var(--card-border);
+}
+
+.faqHeader {
+  width: 100%;
+  padding: 16px 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.faqHeader:hover .faqQuestion {
+  color: var(--foreground);
+}
+
+.faqQuestion {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color var(--transition-fast);
+}
+
+.faqChevron {
+  font-size: 0.75rem;
+  color: var(--muted);
+  transition: transform var(--transition-fast);
+}
+
+.faqChevronRotated {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1), padding 0.3s ease;
+  padding: 0 8px;
+}
+
+.faqAnswerExpanded {
+  max-height: 800px;
+  padding: 0 8px 16px 8px;
+  transition: max-height 0.4s ease-in-out, padding 0.3s ease;
+}
+
+.faqAnswerContent {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
