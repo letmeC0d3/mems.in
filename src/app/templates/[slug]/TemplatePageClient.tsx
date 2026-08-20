@@ -42,7 +42,7 @@ export default function TemplatePageClient({ template }: TemplatePageClientProps
           </Link>
           <div className={styles.navActions}>
             <nav className={styles.navLinks} style={{ marginRight: "12px" }}>
-              <Link href="/" className="btn btn-secondary" style={{ padding: "6px 16px" }} id="template-nav-home-btn">
+              <Link href="/templates" className="btn btn-secondary" style={{ padding: "6px 16px" }} id="template-nav-home-btn">
                 All Templates
               </Link>
             </nav>

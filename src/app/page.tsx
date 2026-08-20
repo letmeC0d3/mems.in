@@ -171,10 +171,10 @@ export default function Home() {
             </svg>
           </div>
           <div className={styles.navActions}>
-            <nav className={styles.navLinks} style={{ marginRight: "12px" }}>
+            <nav className={styles.navLinks} style={{ marginRight: "12px", display: "flex", gap: "16px", alignItems: "center" }}>
               <a
                 href="#"
-                className={styles.navLink}
+                style={{ fontSize: "0.9rem", fontWeight: 500, color: "var(--foreground)" }}
                 onClick={(e) => {
                   e.preventDefault();
                   setActiveTab("meme");
@@ -183,6 +183,13 @@ export default function Home() {
               >
                 Meme Maker
               </a>
+              <Link
+                href="/templates"
+                style={{ fontSize: "0.9rem", fontWeight: 500, color: "var(--muted)" }}
+                id="nav-link-templates"
+              >
+                Templates
+              </Link>
             </nav>
             {/* Theme switcher toggle button */}
             <ThemeToggle />
@@ -351,7 +358,7 @@ export default function Home() {
               </div>
             ) : !selectedTemplate ? (
               // Step 1: Select Template
-              <div className="glass" style={{ padding: "24px" }} id="template-selector-container">
+              <div className={`glass ${styles.selectorContainer}`} id="template-selector-container">
                 <h2 style={{ fontSize: "1.3rem", marginBottom: "16px", display: "flex", alignItems: "center", gap: "10px" }}>
                   <span>1️⃣</span> Choose a Meme Template
                 </h2>
@@ -568,6 +575,7 @@ export default function Home() {
         <div className={styles.footerContent}>
           <p>© 2026 mems.in • All Rights Reserved.</p>
           <div style={{ display: "flex", gap: "16px", marginTop: "8px", flexWrap: "wrap", justifyContent: "center", fontSize: "0.8rem" }}>
+            <Link href="/templates" style={{ textDecoration: "underline", color: "var(--primary)" }} id="footer-link-templates">Templates Library</Link>
             <Link href="/about" style={{ textDecoration: "underline", color: "var(--primary)" }} id="footer-link-about">About & Contact</Link>
             <Link href="/privacy" style={{ textDecoration: "underline", color: "var(--primary)" }} id="footer-link-privacy">Privacy Policy</Link>
             <Link href="/terms" style={{ textDecoration: "underline", color: "var(--primary)" }} id="footer-link-terms">Terms of Service</Link>
